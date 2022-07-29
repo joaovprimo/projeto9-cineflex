@@ -1,0 +1,18 @@
+@media (max-width:767px){
+.head{
+    position: relative;
+    top:0;
+    right: 0;
+width: 100vw;
+height: 70px;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: 
+rgba(195, 207, 217, 1);
+}
+h1{
+    color:rgba(232, 131, 58, 1);
+    font-size: 35px;
+}
+}
