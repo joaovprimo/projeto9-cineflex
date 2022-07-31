@@ -1,0 +1,42 @@
+@media (max-width:767px) {
+    .hours {
+        width: 100vw;
+    }
+
+    .date {
+        margin-left: 25px;
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        font-size: 20px;
+        line-height: 23px;
+        width: 241px;
+        height: 35px;
+        margin-bottom: 10px;
+        color: #293845;
+    }
+
+    .section {
+        display: flex;
+    }
+
+    .hour {
+        margin-right: 10px;
+        width: 83px;
+        height: 43px;
+        background-color: #E8833A;
+        border-radius: 3px;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    a{
+        color:
+        rgba(255, 255, 255, 1);
+       
+        text-decoration: none;
+    }
+
+}
