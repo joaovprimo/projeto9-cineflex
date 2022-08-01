@@ -1,7 +1,7 @@
 import "./style.css"
 import { useState, useEffect } from "react";
 
-export default function Seat({choseid, chosename ,choseavb, seatsID, setSeatsID, seatsName, setSeatsName}){
+export default function Seat({choseid, chosename ,choseavb, seatID, setSeatID, seatName, setSeatName}){
     const [status, setStatus] = useState ("disponivel");
 
     useEffect(()=>{
@@ -10,18 +10,22 @@ export default function Seat({choseid, chosename ,choseavb, seatsID, setSeatsID,
     } }, []);   
     
 return (
-    <div className= {`seat ${status}`} onClick={()=> makeselect({choseavb, status, setStatus}) }>  {chosename} </div>
+    <div className= {`seat ${status}`} onClick={()=> makeselect({choseid, chosename,choseavb, status, setStatus,seatID, setSeatID, seatName, setSeatName}) }>  {chosename} </div>
 )
 
 }
 
-function makeselect({choseavb, status, setStatus}){
-    console.log(choseavb);
+function makeselect({choseid, chosename, choseavb, status, setStatus, seatID, setSeatID, seatName, setSeatName}){
+    
 if(choseavb === true){
     if(status==="selecionado"){
-setStatus("disponivel")
+setStatus("disponivel");
+setSeatName(seatName.filter(seat=> seat!==chosename));
+setSeatID(seatID.filter(seat=> seat!==choseid));
     }else{
-        setStatus("selecionado")
+        setStatus("selecionado");
+        setSeatName([...seatName,chosename]);
+        setSeatID([...seatID, choseid]);
     }
 } else{
 alert("Esse assento não está disponível")

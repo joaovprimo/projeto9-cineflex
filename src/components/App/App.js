@@ -6,16 +6,15 @@ import Head from "../Head/Head";
 import ChooseHour from "../ChooseHour/ChooseHour"
 import ChooseSeat from "../ChooseSeat/ChooseSeat"
 import Footer from "../Footer/Footer";
+import Sucess from "../Sucess/Sucess"
 
 export default function App (){
-    const [objmovie, setObjmovie] = useState([]);
-    console.log(objmovie);
+    const [objmovie, setObjmovie] = useState({});
 
-    function ChooseHr(inf){
-        console.log(inf)
-    setObjmovie({...objmovie, inf})
+    function ChooseHr({posterURL, title, hour, day }){
+    setObjmovie(...objmovie, posterURL, title, hour , day )
     }
-    if(objmovie.length!==0){
+    
         return(
 <BrowserRouter>    
 <Head/>
@@ -23,25 +22,10 @@ export default function App (){
 <Route path="/" element={<GlobalMovies ChooseHr={ChooseHr} objmovie={objmovie} setObjmovie={setObjmovie}/>}/>
 <Route path="/sessoes/:Id" element={<ChooseHour ChooseHr={ChooseHr} objmovie={objmovie} setObjmovie={setObjmovie} />}/>
 <Route path="/assentos/:idSessao" element={<ChooseSeat ChooseHr={ChooseHr} objmovie={objmovie} setObjmovie={setObjmovie}/>}/>
-
+<Route path="/sucesso" element={<Sucess/>} />
 </Routes>
-<Footer>
-    
-        </Footer>
+
 </BrowserRouter>)
-    }else{
-        return(
-            <BrowserRouter>    
-<Head/>
-<Routes>
-<Route path="/" element={<GlobalMovies ChooseHr={ChooseHr} objmovie={objmovie} setObjmovie={setObjmovie}/>}/>
-<Route path="/sessoes/:Id" element={<ChooseHour ChooseHr={ChooseHr} objmovie={objmovie} setObjmovie={setObjmovie} />}/>
-<Route path="/assentos/:idSessao" element={<ChooseSeat ChooseHr={ChooseHr} objmovie={objmovie} setObjmovie={setObjmovie}/>}/>
-
-</Routes>
-</BrowserRouter>);
-
-    }
 
 
 }

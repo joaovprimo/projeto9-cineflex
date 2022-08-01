@@ -1,12 +1,13 @@
 import "./style.css"
 import Seat from "./Seat"
+import Footer from "../Footer/Footer";
 export default function Seats( {seats, seatID, setSeatID, seatName, setSeatName} ){
     console.log(seats);
     return(
     <>
     <div className="seats">
                 {seats.map((chose)=><Seat choseid={chose.id} chosename={chose.name} choseavb={chose.isAvailable} 
-                seatsID={seatID} setSeatsID={setSeatID} seatsName={seatName} setSeatsName={setSeatName}  
+                seatID={seatID} setSeatID={setSeatID} seatName={seatName} setSeatName={setSeatName}  
                 /> )}
                 </div>
     
