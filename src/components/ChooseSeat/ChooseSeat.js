@@ -1,9 +1,9 @@
 import "./style.css"
-import { useState, useEffect } from "react";
+import { useNavigate, useState, useEffect } from "react";
 import {useParams,Link } from "react-router-dom";
 import axios from "axios";
 import Seats from "./Seats"
-import Seat from "./Seat"
+import Footer from "../Footer/Footer";
 
 
 export default function ChooseSeat(){
@@ -11,18 +11,23 @@ export default function ChooseSeat(){
     const [seats,setSeats]= useState([]);
    const [seatID, setSeatID] = useState([]);
    const[seatName, setSeatName] = useState([]);
+   const [infoMovies, setInfoMovies] = useState({});
+   const [infMovies, setInfMovies] = useState({});
+   const[title, setTitle]= useState({});
 
     useEffect( 
         ()=> {const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${params.idSessao}/seats`);
 
         promise.then(seat=>{
-            setSeats(...seats, seat.data.seats)
+            setSeats(seat.data.seats)
+            setInfoMovies(seat.data);
+           setInfMovies(seat.data.day);
+           setTitle(seat.data.movie);
         })
     }
     
         , []
     )
-    {console.log(seats)}
 
     return(
       <div>
@@ -32,7 +37,9 @@ export default function ChooseSeat(){
             <Seats seatID={seatID} setSeatID={setSeatID} seatName={seatName} setSeatName={setSeatName} seats={seats}
         />    
         <Dataform seatID={seatID}/>
+        <Footer title={title.title} posterURL={title.posterURL} hourweek={infMovies.weekday} hname={infoMovies.name}/>
         </div>
+        
     )
        
 }
@@ -40,7 +47,7 @@ export default function ChooseSeat(){
 function Dataform({seatID}){
 const [name, setName] = useState("");
 const [cpf, setCpf]= useState("");
-const navigate = useNavigate();
+//const navigate = useNavigate();
 console.log(name,cpf);
 function dados () {
     const requisicao = axios.post("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many", {

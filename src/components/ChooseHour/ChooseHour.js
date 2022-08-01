@@ -9,15 +9,17 @@ import Bottom from "../Footer/Bottom"
 export default function ChooseHour ({objmovie,ChooseHr}){
     
     const [hours,setHours] = useState([]);
-    const params = useParams();
+    const [info, setInfo]= useState({})
+        const params = useParams();
     console.log(params.Id);
-    console.log(hours);
+    
     
     useEffect( () => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${params.Id}/showtimes`);
 
         promise.then(hrs=>{
-            setHours(...hours, hrs.data.days)
+        setHours(hrs.data.days)
+        setInfo(hrs.data)
         })
     }
     
@@ -34,7 +36,7 @@ export default function ChooseHour ({objmovie,ChooseHr}){
                 <h3> {hour.weekday} - {hour.date}</h3>
                 <div className="section">
                     
-                   {hour.showtimes.map((h)=>(<div className="hour" onClick={()=>{<Footer hourweek={hour.weekday} hname= {h.name}/>}}>
+                   {hour.showtimes.map((h)=>(<div className="hour">
                     <Link to={`/assentos/${h.id}`}>
                    {h.name}</Link>
                      </div>))} 
@@ -43,8 +45,10 @@ export default function ChooseHour ({objmovie,ChooseHr}){
                     </div>))}   
             </div>
             </div>
+            <Footer posterURL={info.posterURL} title={info.title} />
             </>
     )
+    
 
 }
 
