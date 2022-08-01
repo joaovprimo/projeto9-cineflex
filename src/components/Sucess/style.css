@@ -1,0 +1,40 @@
+@media (max-width:767px) {
+    .sucesso {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 28px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.04em;
+        width: 150px;
+    }
+
+    .sucesso h2 {
+        color: #247A6B;
+    }
+
+    .sucess {
+        margin-left: 30px;
+    }
+
+    .info {
+        margin-bottom: 50px;
+    }
+
+    .info h1 {
+        font-weight: 700;
+        font-size: 24px;
+        letter-spacing: 0.04em;
+        color: #293845;
+        margin-bottom: 15px;
+    }
+
+    .info p {
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 26px;
+        color: #293845;
+    }
+
+}

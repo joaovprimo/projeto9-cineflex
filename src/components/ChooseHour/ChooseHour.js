@@ -3,15 +3,13 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Footer from "../Footer/Footer";
-import Bottom from "../Footer/Bottom"
 
 
-export default function ChooseHour ({objmovie,ChooseHr}){
+export default function ChooseHour (){
     
     const [hours,setHours] = useState([]);
     const [info, setInfo]= useState({})
         const params = useParams();
-    console.log(params.Id);
     
     
     useEffect( () => {
@@ -33,7 +31,7 @@ export default function ChooseHour ({objmovie,ChooseHr}){
             <div className="hours">
                 {hours.map(hour=> (
                 <div className="date">
-                <h3> {hour.weekday} - {hour.date}</h3>
+                <span> {hour.weekday} - {hour.date}</span>
                 <div className="section">
                     
                    {hour.showtimes.map((h)=>(<div className="hour">
